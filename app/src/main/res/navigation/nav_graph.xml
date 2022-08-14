@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/quoteFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/quoteFragment"
         android:name="com.absut.jetquotes.ui.quote.QuoteFragment"
         android:label="Quoted"
         tools:layout="@layout/fragment_quotes">
@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_quote_detail" >
         <action
             android:id="@+id/action_quoteDetailFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/quoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -33,6 +33,6 @@
         tools:layout="@layout/fragment_favorite" >
         <action
             android:id="@+id/action_favoriteFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/quoteFragment" />
     </fragment>
 </navigation>

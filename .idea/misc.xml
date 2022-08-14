@@ -3,7 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/fragment_quotes.xml" value="0.36666666666666664" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_format_quote_black_24dp_filled.xml" value="0.205" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_format_quote_black_24dp_rounded.xml" value="0.205" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_format_quote_outlined_24dp.xml" value="0.205" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_quote_24dp_filled.xml" value="0.205" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_quote_24dp_rounded.xml" value="0.205" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_quote_outlined_24dp.xml" value="0.205" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/content_main.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/fragment_favorite.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/fragment_quote_detail.xml" value="0.33" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/fragment_quotes.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/quote_list_item.xml" value="0.33" />
       </map>
     </option>
   </component>
