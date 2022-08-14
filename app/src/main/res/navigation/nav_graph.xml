@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.absut.jetquotes.ui.quote.QuoteFragment"
+        android:label="Quoted"
+        tools:layout="@layout/fragment_quotes">
+        <action
+            android:id="@+id/action_FirstFragment_to_quoteDetailFragment"
+            app:destination="@id/quoteDetailFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quoteDetailFragment"
+        android:name="com.absut.jetquotes.ui.detail.QuoteDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_quote_detail" >
+        <action
+            android:id="@+id/action_quoteDetailFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.absut.jetquotes.ui.favourite.FavoriteFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+</navigation>
