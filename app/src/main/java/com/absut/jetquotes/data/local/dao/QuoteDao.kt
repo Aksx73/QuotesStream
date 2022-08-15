@@ -1,5 +1,6 @@
 package com.absut.jetquotes.data.local.dao
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.absut.jetquotes.model.Quote
 import kotlinx.coroutines.flow.Flow
@@ -17,7 +18,7 @@ interface QuoteDao {
     suspend fun updateFavorite(_id: String, isFavorite: Boolean)
 
     @Query("SELECT * FROM quotes")
-    fun getAllQuotes(): Flow<List<Quote>>
+    fun getAllQuotes(): PagingSource<Int,Quote>
 
     @Query("SELECT * FROM quotes WHERE isFavorite = 1")
     fun getAllFavoriteQuotes(): Flow<List<Quote>>

@@ -68,7 +68,7 @@ class QuoteRemoteMediator @Inject constructor(
                     )
                 }
                 quoteRemoteKeyDao.addAllRemoteKeys(keys)
-                quoteDao.insertQuotes(response.quoteDtos.map { quoteDto -> quoteDto.toQuote() })
+                quoteDao.insertQuotes(response.quoteDtos.map { it.toQuote() })
             }
 
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
