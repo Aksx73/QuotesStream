@@ -10,6 +10,8 @@ import com.absut.jetquotes.data.mapper.toQuote
 import com.absut.jetquotes.data.remote.QuoteApi
 import com.absut.jetquotes.model.Quote
 import com.absut.jetquotes.model.QuoteRemoteKeys
+import retrofit2.HttpException
+import java.io.IOException
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
@@ -54,7 +56,6 @@ class QuoteRemoteMediator @Inject constructor(
             val nextPage = if (endOfPaginationReached) null else currentPage + 1
 
             quoteDatabase.withTransaction {
-
                 if (loadType == LoadType.REFRESH) {
                     quoteDao.clearAllQuotes()
                     quoteRemoteKeyDao.deleteAllRemoteKeys()
@@ -73,8 +74,10 @@ class QuoteRemoteMediator @Inject constructor(
 
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
 
-        } catch (e: Exception) {
-            return MediatorResult.Error(e)
+        } catch (exception: IOException) {
+            return MediatorResult.Error(exception)
+        } catch (exception: HttpException) {
+            return MediatorResult.Error(exception)
         }
 
     }
@@ -85,7 +88,7 @@ class QuoteRemoteMediator @Inject constructor(
     ): QuoteRemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
-                quoteRemoteKeyDao.getRemoteKey(id = id)
+                quoteRemoteKeyDao.getRemoteKey(quoteId = id)
             }
         }
     }
@@ -95,7 +98,7 @@ class QuoteRemoteMediator @Inject constructor(
     ): QuoteRemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { quote ->
-                quoteRemoteKeyDao.getRemoteKey(id = quote.id)
+                quoteRemoteKeyDao.getRemoteKey(quoteId = quote.id)
             }
     }
 
@@ -104,7 +107,7 @@ class QuoteRemoteMediator @Inject constructor(
     ): QuoteRemoteKeys? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { quote ->
-                quoteRemoteKeyDao.getRemoteKey(id = quote.id)
+                quoteRemoteKeyDao.getRemoteKey(quoteId = quote.id)
             }
     }
 

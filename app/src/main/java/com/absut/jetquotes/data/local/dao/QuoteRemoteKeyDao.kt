@@ -9,8 +9,8 @@ import com.absut.jetquotes.model.QuoteRemoteKeys
 @Dao
 interface QuoteRemoteKeyDao {
 
-    @Query("SELECT * FROM QuoteRemoteKeys WHERE id=:id")
-    suspend fun getRemoteKey(id:String): QuoteRemoteKeys
+    @Query("SELECT * FROM QuoteRemoteKeys WHERE id=:quoteId")
+    suspend fun getRemoteKey(quoteId:String): QuoteRemoteKeys
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAllRemoteKeys(remoteKeys:List<QuoteRemoteKeys>)

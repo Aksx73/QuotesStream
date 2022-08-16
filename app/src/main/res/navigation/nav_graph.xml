@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/quoteFragment"
         android:name="com.absut.jetquotes.ui.quote.QuoteFragment"
-        android:label="Quoted"
+        android:label="Quotes"
         tools:layout="@layout/fragment_quotes">
         <action
             android:id="@+id/action_FirstFragment_to_quoteDetailFragment"

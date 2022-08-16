@@ -9,7 +9,8 @@ import com.absut.jetquotes.model.QuoteRemoteKeys
 
 @Database(
     entities = [Quote::class, QuoteRemoteKeys::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class QuoteDatabase : RoomDatabase() {
 

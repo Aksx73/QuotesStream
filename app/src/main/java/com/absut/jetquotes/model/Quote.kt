@@ -10,5 +10,5 @@ data class Quote(
     @PrimaryKey(autoGenerate = false)
     val id: String,
     val length: Int,
-    var isFavorite: Boolean = false
+  //  var isFavorite: Boolean = false
 )

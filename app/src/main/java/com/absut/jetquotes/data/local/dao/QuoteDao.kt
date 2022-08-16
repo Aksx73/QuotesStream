@@ -14,13 +14,13 @@ interface QuoteDao {
     @Query("DELETE FROM quotes")
     suspend fun clearAllQuotes()
 
-    @Query("UPDATE quotes SET isFavorite = :isFavorite WHERE id = :_id")
-    suspend fun updateFavorite(_id: String, isFavorite: Boolean)
+   /* @Query("UPDATE quotes SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun updateFavorite(id: String, isFavorite: Boolean)*/
 
     @Query("SELECT * FROM quotes")
     fun getAllQuotes(): PagingSource<Int,Quote>
 
-    @Query("SELECT * FROM quotes WHERE isFavorite = 1")
-    fun getAllFavoriteQuotes(): Flow<List<Quote>>
+ /*   @Query("SELECT * FROM quotes WHERE isFavorite = 1")
+    fun getAllFavoriteQuotes(): Flow<List<Quote>>*/
 
 }

@@ -10,7 +10,7 @@ data class ApiResponse(
     val lastItemIndex: Int,
     @SerializedName("page")
     val page: Int,
-    @SerializedName("quoteDtos")
+    @SerializedName("results")
     val quoteDtos: List<QuoteDto>,
     @SerializedName("totalCount")
     val totalCount: Int,
