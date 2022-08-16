@@ -44,20 +44,22 @@ class QuoteFragment : Fragment() {
         initSwipeToRefresh()
 
         binding.fab.setOnClickListener {
-            binding.recyclerView.smoothScrollToPosition(0)
+            binding.recyclerView.scrollToPosition(0)
         }
 
         binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+               //todo
+            }
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
-                if (!recyclerView.canScrollVertically(-1)) {
-                    binding.fab.hide()
-                }else binding.fab.show()
+                //todo
             }
         })
 
-
     }
+
 
     private fun initViews() {
         quoteAdapter = QuoteAdapter { quote ->
