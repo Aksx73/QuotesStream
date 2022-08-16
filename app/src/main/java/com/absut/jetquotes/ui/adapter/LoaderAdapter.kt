@@ -8,13 +8,19 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.absut.jetquotes.R
+import com.absut.jetquotes.databinding.LoaderItemBinding
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
-class LoaderAdapter : LoadStateAdapter<LoaderAdapter.LoaderViewHolder>() {
+class LoaderAdapter(private val retry: () -> Unit) :
+    LoadStateAdapter<LoaderAdapter.LoaderViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoaderViewHolder {
         return LoaderViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.loader_item, parent, false)
+            LoaderItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
     }
 
@@ -23,11 +29,21 @@ class LoaderAdapter : LoadStateAdapter<LoaderAdapter.LoaderViewHolder>() {
     }
 
 
-    class LoaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val progressBar = itemView.findViewById<CircularProgressIndicator>(R.id.progress_circular)
+    inner class LoaderViewHolder(private val binding: LoaderItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.btRetry.setOnClickListener {
+                retry.invoke()
+            }
+        }
 
         fun bind(loadState: LoadState) {
-            progressBar.isVisible = loadState is LoadState.Loading
+            binding.apply {
+                progressCircular.isVisible = loadState is LoadState.Loading
+                txtTitle.isVisible = loadState !is LoadState.Loading
+                btRetry.isVisible = loadState !is LoadState.Loading
+            }
         }
     }
 

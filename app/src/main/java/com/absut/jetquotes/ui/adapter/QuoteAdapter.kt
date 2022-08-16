@@ -30,7 +30,7 @@ class QuoteAdapter(private val onItemClicked: (Quote) -> Unit) :
         }
     }
 
-    class QuotesViewHolder(private val binding: QuoteListItemBinding) :
+   inner class QuotesViewHolder(private val binding: QuoteListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(quote: Quote) {

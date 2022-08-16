@@ -10,11 +10,12 @@
         android:name="com.absut.jetquotes.ui.quote.QuoteFragment"
         android:label="Quotes"
         tools:layout="@layout/fragment_quotes">
+
         <action
-            android:id="@+id/action_FirstFragment_to_quoteDetailFragment"
+            android:id="@+id/action_quoteFragment_to_quoteDetailFragment"
             app:destination="@id/quoteDetailFragment" />
         <action
-            android:id="@+id/action_FirstFragment_to_favoriteFragment"
+            android:id="@+id/action_quoteFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Personal/Akshay/StudioProjects/JetQuotes/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Personal/Akshay/StudioProjects/JetQuotes/app/src/main/res/layout/content_main.xml" value="0.23802083333333332" />
+        <entry key="..\:/Personal/Akshay/StudioProjects/JetQuotes/app/src/main/res/layout/fragment_quotes.xml" value="0.23802083333333332" />
+        <entry key="..\:/Personal/Akshay/StudioProjects/JetQuotes/app/src/main/res/layout/loader_item.xml" value="0.4" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_arrow_up_24dp.xml" value="0.205" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_favorite_24px.xml" value="0.205" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_format_quote_black_24dp_filled.xml" value="0.205" />
