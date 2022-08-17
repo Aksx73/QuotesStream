@@ -1,4 +1,4 @@
-![GitHub Cards Preview](imagelink)
+[![Surface-Pro-8-2.png](https://i.postimg.cc/YC6bTrDR/Surface-Pro-8-2.png)](https://postimg.cc/yDNmZHH3)
 
 # Quotes Stream
 Quotes application built to demonstrate Pagination with Remote Mediator following MVVM architecture
