@@ -1,25 +1,27 @@
-package com.absut.jetquotes.ui.adapter
+package com.absut.jetquotes.ui.favourite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.absut.jetquotes.databinding.QuoteListItemBinding
 import com.absut.jetquotes.model.Quote
+import com.absut.jetquotes.ui.quote.QuoteAdapter
 
-class QuoteAdapter(private val onItemClicked: (Quote) -> Unit) :
-    PagingDataAdapter<Quote, QuoteAdapter.QuotesViewHolder>(DiffCallback) {
+class FavoriteAdapter(private val onItemClicked: (Quote) -> Unit) :
+    ListAdapter<Quote, FavoriteAdapter.FavoriteViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuotesViewHolder {
-        return QuotesViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
+        return FavoriteViewHolder(
             QuoteListItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
     }
 
-    override fun onBindViewHolder(holder: QuotesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         val current = getItem(position)
 
         if (current != null) {
@@ -30,14 +32,14 @@ class QuoteAdapter(private val onItemClicked: (Quote) -> Unit) :
         }
     }
 
-   inner class QuotesViewHolder(private val binding: QuoteListItemBinding) :
+    inner class FavoriteViewHolder(private val binding: QuoteListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(quote: Quote) {
-           binding.apply {
-               txtQuote.text = quote.content
-               txtAuthor.text = quote.author
-           }
+            binding.apply {
+                txtQuote.text = quote.content
+                txtAuthor.text = quote.author
+            }
         }
     }
 

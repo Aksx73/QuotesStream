@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -15,12 +13,8 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.absut.jetquotes.R
 import com.absut.jetquotes.databinding.FragmentQuotesBinding
-import com.absut.jetquotes.ui.adapter.LoaderAdapter
 import com.absut.jetquotes.ui.viewmodel.QuoteViewModel
-import com.absut.jetquotes.ui.adapter.QuoteAdapter
 import com.absut.jetquotes.ui.asMergedLoadStates
-import com.google.android.material.snackbar.Snackbar
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.*
 
 class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
@@ -58,16 +52,16 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
         })
 
 
-/*
-        quoteAdapter.addLoadStateListener { loadState ->
+
+       /* quoteAdapter.addLoadStateListener { loadState ->
             binding.apply {
-               // swipeRefresh.isRefreshing = loadState.mediator?.refresh is LoadState.Loading
-               // recyclerView.isVisible = loadState.mediator?.refresh is LoadState.NotLoading
+                // swipeRefresh.isRefreshing = loadState.mediator?.refresh is LoadState.Loading
+                // recyclerView.isVisible = loadState.mediator?.refresh is LoadState.NotLoading
                 emptyView.isVisible = loadState.mediator?.refresh is LoadState.Error
 
                 // empty view
-               */
-/* if (loadState.mediator?.refresh is LoadState.NotLoading &&
+
+                if (loadState.mediator?.refresh is LoadState.NotLoading &&
                     loadState.append.endOfPaginationReached &&
                     quoteAdapter.itemCount < 1
                 ) {
@@ -75,11 +69,10 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
                     textViewEmpty.isVisible = true
                 } else {
                     textViewEmpty.isVisible = false
-                }*//*
+                } *
 
             }
-        }
-*/
+        }*/
 
 
     }
@@ -87,10 +80,8 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
 
     private fun initViews() {
         quoteAdapter = QuoteAdapter { quote ->
-            Snackbar.make(binding.recyclerView, "Quote ID: ${quote.id}", Snackbar.LENGTH_SHORT).show()
-
-            /*val action = GalleryFragmentDirections.actionGalleryFragmentToDetailsFragment(photo)
-            findNavController().navigate(action)*/
+            val action = QuoteFragmentDirections.actionQuoteFragmentToQuoteDetailFragment(quote)
+            findNavController().navigate(action)
         }
 
         binding.recyclerView.adapter = quoteAdapter.withLoadStateHeaderAndFooter(
@@ -98,9 +89,9 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
             footer = LoaderAdapter { quoteAdapter.retry() }
         )
 
-       /* binding.btRetry.setOnClickListener{
-            quoteAdapter.retry()
-        }*/
+        /* binding.btRetry.setOnClickListener{
+             quoteAdapter.retry()
+         }*/
 
         lifecycleScope.launchWhenCreated {
             quoteAdapter.loadStateFlow.collect { loadStates ->
@@ -111,28 +102,30 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
             }
         }
 
-
         lifecycleScope.launchWhenCreated {
             viewModel.quotes.collectLatest {
                 quoteAdapter.submitData(it)
             }
         }
 
-/*
-         lifecycleScope.launchWhenCreated {
-             quoteAdapter.loadStateFlow
-                 // Use a state-machine to track LoadStates such that we only transition to
-                 // NotLoading from a RemoteMediator load if it was also presented to UI.
-                 .asMergedLoadStates()
-                 // Only emit when REFRESH changes, as we only want to react on loads replacing the
-                 // list.
-                 .distinctUntilChangedBy { it.refresh }
-                 // Only react to cases where REFRESH completes i.e., NotLoading.
-                 .filter { it.refresh is LoadState.NotLoading }
-                 // Scroll to top is synchronous with UI updates, even if remote load was triggered.
-                 .collect { binding.recyclerView.scrollToPosition(0) }
-         }
-*/
+        lifecycleScope.launchWhenCreated {
+            quoteAdapter.loadStateFlow
+                // Use a state-machine to track LoadStates such that we only transition to
+                // NotLoading from a RemoteMediator load if it was also presented to UI.
+                .asMergedLoadStates()
+                // Only emit when REFRESH changes, as we only want to react on loads replacing the
+                // list.
+                .distinctUntilChangedBy { it.refresh }
+                // Only react to cases where REFRESH completes i.e., NotLoading.
+                .filter { it.refresh is LoadState.NotLoading }
+                // Scroll to top is synchronous with UI updates, even if remote load was triggered.
+                .collect {
+                    if (_binding != null) {
+                        binding.recyclerView.scrollToPosition(0)
+                    }
+                }
+        }
+
 
     }
 

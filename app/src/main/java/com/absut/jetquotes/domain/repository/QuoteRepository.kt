@@ -6,6 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface QuoteRepository {
 
-    fun getQuotes():Flow<PagingData<Quote>>
+    fun getQuotes(): Flow<PagingData<Quote>>
+
+    suspend fun addRemoveFromFavorite(id: String, isFavorite: Boolean)
+
+    fun getFavoriteQuotes(): Flow<List<Quote>>
 
 }

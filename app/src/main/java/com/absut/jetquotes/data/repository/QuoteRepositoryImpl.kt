@@ -29,4 +29,12 @@ class QuoteRepositoryImpl @Inject constructor(
         ).flow
     }
 
+    override suspend fun addRemoveFromFavorite(id: String, isFavorite: Boolean) {
+       quoteDatabase.quoteDao.updateFavorite(id, isFavorite)
+    }
+
+    override fun getFavoriteQuotes(): Flow<List<Quote>> {
+        return quoteDatabase.quoteDao.getAllFavoriteQuotes()
+    }
+
 }

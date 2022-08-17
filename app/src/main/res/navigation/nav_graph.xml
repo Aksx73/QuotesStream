@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_quoteDetailFragment_to_FirstFragment"
             app:destination="@id/quoteFragment" />
+        <argument
+            android:name="quote"
+            app:argType="com.absut.jetquotes.model.Quote" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -35,5 +38,8 @@
         <action
             android:id="@+id/action_favoriteFragment_to_FirstFragment"
             app:destination="@id/quoteFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_quoteDetailFragment"
+            app:destination="@id/quoteDetailFragment" />
     </fragment>
 </navigation>

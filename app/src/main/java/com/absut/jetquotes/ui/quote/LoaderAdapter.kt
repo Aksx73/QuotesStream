@@ -1,15 +1,12 @@
-package com.absut.jetquotes.ui.adapter
+package com.absut.jetquotes.ui.quote
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.absut.jetquotes.R
 import com.absut.jetquotes.databinding.LoaderItemBinding
-import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class LoaderAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<LoaderAdapter.LoaderViewHolder>() {
