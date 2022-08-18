@@ -1,7 +1,7 @@
 [![Surface-Pro-8-2-1.png](https://i.postimg.cc/tTWcR3B0/Surface-Pro-8-2-1.png)](https://postimg.cc/cg1hXnqT)
 
 # Quotes Stream
-Quotes application built to demonstrate Pagination with Remote Mediator following MVVM architecture
+Quotes application built to demonstrate Pagination using Jetpack Paging library with Remote Mediator following MVVM architecture
 
 ***Download and test latest version 👇***
 
