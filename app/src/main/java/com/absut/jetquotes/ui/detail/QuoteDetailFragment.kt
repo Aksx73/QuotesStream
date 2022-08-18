@@ -43,10 +43,10 @@ class QuoteDetailFragment : Fragment(R.layout.fragment_quote_detail) {
             favorite.setOnClickListener {
                 if (isFavorite) {
                     viewModel.updateFavoriteStatus(args.quote.id, false)
-                    args.quote.isFavorite = false
+                    args.quote.isFavorite = false    //changed value for in-memory quote object to reflect ui change
                 } else {
                     viewModel.updateFavoriteStatus(args.quote.id, true)
-                    args.quote.isFavorite = true
+                    args.quote.isFavorite = true      //changed value for in-memory quote object to reflect ui change
                 }
                 setFavoriteIcon()
             }
