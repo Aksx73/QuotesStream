@@ -9,9 +9,9 @@ Quotes application built to demonstrate Pagination with Remote Mediator followin
 
 ## About
 
-It simply loads data of Spacecrafts, Launcher, Customer Satellites and Centres data of ISRO using [ISRO API](https://github.com/isro/api). Use retrofit to fetch all the json data provided by the api and display on the user screen.<br>
+App loads quotes from open source quotations API [Quotable](https://github.com/lukePeavey/quotable).
 Data will be always loaded from local database. Remote data (from API) and Local data is always synchronized.
-App follows clean architecture pattern (MVVM + Usecases). Whole app is organized with intent to create architecture like in multi-module approach.
+App follows clean architecture pattern (MVVM). Whole app is organized with intent to create architecture like in multi-module approach.
 
 A RemoteMediator implementation helps load paged data from the network into the database, but doesn't load data directly into the UI. Instead, the app uses the database as the [source of truth](https://developer.android.com/jetpack/guide/data-layer#source-of-truth).
 
@@ -30,13 +30,12 @@ A RemoteMediator implementation helps load paged data from the network into the 
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
   - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
   - [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
+  - [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - Paging library helps you load and display pages of data from a larger dataset from local storage or over network.
 - [Dependency Injection](https://developer.android.com/training/dependency-injection) - 
   - [Hilt-Dagger](https://dagger.dev/hilt/) - Standard library to incorporate Dagger dependency injection into an Android application.
   - [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack) - DI for injecting `ViewModel`.
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
-- [Figma](https://figma.com/) - Figma is a vector graphics editor and prototyping tool which is
-  primarily web-based.
-
+- [Figma](https://figma.com/) - Figma is a browser-based UI and UX design application, with excellent design, prototyping, and code options.
 
 # Package Structure
 
