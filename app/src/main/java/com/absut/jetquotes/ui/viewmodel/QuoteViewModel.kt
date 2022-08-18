@@ -30,18 +30,4 @@ class QuoteViewModel @Inject constructor(
         }
     }
 
-    /*private val _favoriteQuotes: MutableStateFlow<State<List<Quote>>> = MutableStateFlow(State.loading())
-   val favoriteQuotes: StateFlow<State<List<Quote>>> = _favoriteQuotes
-
-   fun getFavorite() = viewModelScope.launch {
-       repository.getFavoriteQuotes()
-           .map { response ->
-               State.fromResource(response)
-           }
-           .collect{ state ->
-               _favoriteQuotes.value = state
-           }
-   }*/
-
-
 }

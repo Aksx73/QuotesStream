@@ -1,8 +1,10 @@
 package com.absut.jetquotes.data.remote.dto
 
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class QuoteDto(
     @SerializedName("author")
     val author: String,
