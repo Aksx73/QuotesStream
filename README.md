@@ -9,11 +9,9 @@ Quotes application built to demonstrate Pagination with Remote Mediator followin
 
 ## About
 
-App loads quotes from open source quotations API [Quotable](https://github.com/lukePeavey/quotable).
-Data will be always loaded from local database. Remote data (from API) and Local data is always synchronized.
+App loads quotes from open source quotations API [Quotable](https://github.com/lukePeavey/quotable). Uses Paging 3 library  for pagination with [RemoteMediator](https://developer.android.com/reference/kotlin/androidx/paging/RemoteMediator) for offline support.<br>
+A RemoteMediator implementation helps load paged data from the network into the database, but doesn't load data directly into the UI. Instead, the app uses the database as the [source of truth](https://developer.android.com/jetpack/guide/data-layer#source-of-truth).<br><br>
 App follows clean architecture pattern (MVVM). Whole app is organized with intent to create architecture like in multi-module approach.
-
-A RemoteMediator implementation helps load paged data from the network into the database, but doesn't load data directly into the UI. Instead, the app uses the database as the [source of truth](https://developer.android.com/jetpack/guide/data-layer#source-of-truth).
 
 
 ## Tech stack 🛠
@@ -46,25 +44,26 @@ A RemoteMediator implementation helps load paged data from the network into the 
     |   │   ├── dao         # Data Access Object for Room   
     |   |   |── database    # Datbase Instance
     |   |── remote          # Remote Data Handlers
+    |   |   ├── dto         # Model class from api response
     │   |   ├── api         # Retrofit API for remote end point
-    |   |── model           # Model classes
+    |   |── mapper          # Mapper class to map dto object to required object 
+    |   |── paging          # Remote mediator class
     |   └── repository      # Repository implementation
     |
-    ├── domain              # Model classes
-    |   |── usecase         # Usescase classes
+    ├── domain              # Responsible for business logic
     |   └── repository      # Repository interface (Single source of data)
     |
     ├── di                  # Dependency injection modules 
     |
+    ├── model               # Model/entity classes
+    |
     ├── ui                  # Presentation layer
-    │   |── application     # Application class
-    |   ├── activity        # Main activity
-    |   |── home            # Home fragment  
+    │   |── App             # Application class
+    |   ├── MainActivity    # Main activity
     |   ├── viewmodel       # Common viewmodel for all data
-    |   ├── spacecraft      # Fragment + adapter for spacecraft list
-    |   ├── centres         # Fragment + adapter for isro centres list
-    |   ├── launchers       # Fragment + adapter for isro launchers list
-    |   └── satellite       # Fragment + adapter for customer satellite list
+    |   ├── quote           # Fragment + PagingDataAdapter + Loader adapter for quotes list
+    |   ├── favorite        # Fragment + adapter for favorite quotes
+    |   └── detail          # Fragment for detail view of a single quote
     |
     └── utils               # Utility classes
 
