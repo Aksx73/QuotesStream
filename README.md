@@ -5,7 +5,7 @@ Quotes application built to demonstrate Pagination with Remote Mediator followin
 
 ***Download and test latest version 👇***
 
-[![QuotesStream](https://img.shields.io/badge/QuotesStream-APK-blue.svg?style=for-the-badge&logo=android)]($$apklinkhere$$)
+[![QuotesStream](https://img.shields.io/badge/QuotesStream-APK-blue.svg?style=for-the-badge&logo=android)](https://github.com/Aksx73/Quotes-Stream/raw/master/app/release/app-release.apk)
 
 ## About
 
