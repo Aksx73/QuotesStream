@@ -4,8 +4,12 @@
     tools:context="com.absut.jetquotes.ui.MainActivity">
     <item
         android:id="@+id/action_favourite"
-        android:orderInCategory="100"
         android:title="Favorites"
         android:icon="@drawable/ic_favorite_24px"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_theme"
+        android:title="Change theme"
+        android:icon="@drawable/ic_light_mode_24px"
         app:showAsAction="always" />
 </menu>

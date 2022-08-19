@@ -1,7 +1,11 @@
 package com.absut.jetquotes.ui.quote
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.ActivityCompat.invalidateOptionsMenu
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -24,6 +28,8 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
 
     private lateinit var quoteAdapter: QuoteAdapter
     private val viewModel by activityViewModels<QuoteViewModel>()
+
+    private lateinit var menuTheme: MenuItem
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,27 +58,26 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
         })
 
 
+        /* quoteAdapter.addLoadStateListener { loadState ->
+             binding.apply {
+                 // swipeRefresh.isRefreshing = loadState.mediator?.refresh is LoadState.Loading
+                 // recyclerView.isVisible = loadState.mediator?.refresh is LoadState.NotLoading
+                 emptyView.isVisible = loadState.mediator?.refresh is LoadState.Error
 
-       /* quoteAdapter.addLoadStateListener { loadState ->
-            binding.apply {
-                // swipeRefresh.isRefreshing = loadState.mediator?.refresh is LoadState.Loading
-                // recyclerView.isVisible = loadState.mediator?.refresh is LoadState.NotLoading
-                emptyView.isVisible = loadState.mediator?.refresh is LoadState.Error
+                 // empty view
 
-                // empty view
+                 if (loadState.mediator?.refresh is LoadState.NotLoading &&
+                     loadState.append.endOfPaginationReached &&
+                     quoteAdapter.itemCount < 1
+                 ) {
+                     recyclerView.isVisible = false
+                     textViewEmpty.isVisible = true
+                 } else {
+                     textViewEmpty.isVisible = false
+                 } *
 
-                if (loadState.mediator?.refresh is LoadState.NotLoading &&
-                    loadState.append.endOfPaginationReached &&
-                    quoteAdapter.itemCount < 1
-                ) {
-                    recyclerView.isVisible = false
-                    textViewEmpty.isVisible = true
-                } else {
-                    textViewEmpty.isVisible = false
-                } *
-
-            }
-        }*/
+             }
+         }*/
 
 
     }
@@ -136,6 +141,9 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.menu_main, menu)
+        menuTheme = menu.findItem(R.id.action_theme)
+        setUpMenuThemeIcon(viewModel.isDark)
+
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -144,8 +152,31 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
                 findNavController().navigate(R.id.action_quoteFragment_to_favoriteFragment)
                 true
             }
+            R.id.action_theme -> {
+                // Get new mode.
+                val mode =
+                    if ((resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO) {
+                        viewModel.isDark = true
+                        AppCompatDelegate.MODE_NIGHT_YES
+                    } else {
+                        viewModel.isDark = false
+                        AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+                    }
+                // Change UI Mode
+                AppCompatDelegate.setDefaultNightMode(mode)
+                setUpMenuThemeIcon(viewModel.isDark)
+                true
+            }
             else -> false
         }
+    }
+
+    private fun setUpMenuThemeIcon(isDark: Boolean) {
+        menuTheme.icon = if (isDark) ContextCompat.getDrawable(
+            requireActivity(),
+            R.drawable.ic_light_mode_24px
+        ) else ContextCompat.getDrawable(requireActivity(), R.drawable.ic_dark_mode_24dp)
+
     }
 
     override fun onDestroyView() {

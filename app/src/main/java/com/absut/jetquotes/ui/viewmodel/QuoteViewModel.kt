@@ -18,6 +18,7 @@ class QuoteViewModel @Inject constructor(
     private val repository: QuoteRepository
 ) : ViewModel() {
 
+    var isDark: Boolean = true
     val quotes = repository.getQuotes().cachedIn(viewModelScope)
 
     fun updateFavoriteStatus(id: String, value: Boolean) = viewModelScope.launch {

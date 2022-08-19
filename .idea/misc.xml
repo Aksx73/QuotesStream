@@ -25,6 +25,10 @@
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/quote_list_item.xml" value="0.33" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/menu/menu_main.xml" value="0.337037037037037" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/xml/file_paths.xml" value="0.36666666666666664" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_dark_mode_24dp.xml" value="0.215" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_light_mode_24px.xml" value="0.215" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_lightbulb.xml" value="0.215" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/layout/fragment_quotes.xml" value="0.35555555555555557" />
       </map>
     </option>
   </component>
