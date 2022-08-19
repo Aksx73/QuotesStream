@@ -23,12 +23,16 @@ App follows clean architecture pattern (MVVM). Whole app is organized with inten
   asynchronously.
 - [Flow](https://kotlinlang.org/docs/reference/coroutines/flow.html) - A flow is an asynchronous
   version of a Sequence, a type of collection whose values are lazily produced.
-- [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
+- [Android Jetpack](https://developer.android.com/jetpack) - A suite of libraries to help developers follow best practices, reduce boilerplate code.
   - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Data objects that notify views when the underlying database changes.
   - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Stores UI-related data that isn't destroyed on UI changes. 
   - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
   - [Room](https://developer.android.com/topic/libraries/architecture/room) - SQLite object mapping library.
   - [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview) - Paging library helps you load and display pages of data from a larger dataset from local storage or over network.
+  - [DataStore](https://developer.android.com/topic/libraries/architecture/datastore) -
+  Jetpack DataStore is a data storage solution that allows you to store key-value pairs or typed
+  objects with protocol buffers. DataStore uses Kotlin coroutines and Flow to store data
+  asynchronously, consistently, and transactionally
 - [Dependency Injection](https://developer.android.com/training/dependency-injection) - 
   - [Hilt-Dagger](https://dagger.dev/hilt/) - Standard library to incorporate Dagger dependency injection into an Android application.
   - [Hilt-ViewModel](https://developer.android.com/training/dependency-injection/hilt-jetpack) - DI for injecting `ViewModel`.
@@ -38,7 +42,7 @@ App follows clean architecture pattern (MVVM). Whole app is organized with inten
 # Package Structure
 
     # Root Package
-    .
+    |
     ├── data                # For data handling.
     │   ├── local           # Local Persistence Database. Room (SQLite) database
     |   │   ├── dao         # Data Access Object for Room   
@@ -48,6 +52,7 @@ App follows clean architecture pattern (MVVM). Whole app is organized with inten
     │   |   ├── api         # Retrofit API for remote end point
     |   |── mapper          # Mapper class to map dto object to required object 
     |   |── paging          # Remote mediator class
+    |   |── preference      # Datastore manager class
     |   └── repository      # Repository implementation
     |
     ├── domain              # Responsible for business logic
