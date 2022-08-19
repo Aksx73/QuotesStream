@@ -2,6 +2,7 @@ package com.absut.jetquotes.ui.quote
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
@@ -11,15 +12,19 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.absut.jetquotes.R
+import com.absut.jetquotes.data.preference.DataStoreManager
 import com.absut.jetquotes.databinding.FragmentQuotesBinding
+import com.absut.jetquotes.ui.MainActivity
 import com.absut.jetquotes.ui.viewmodel.QuoteViewModel
 import com.absut.jetquotes.ui.asMergedLoadStates
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
 class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
 
@@ -29,7 +34,9 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
     private lateinit var quoteAdapter: QuoteAdapter
     private val viewModel by activityViewModels<QuoteViewModel>()
 
-    private lateinit var menuTheme: MenuItem
+    private var menuTheme: MenuItem? = null
+
+    private lateinit var dataStoreManager: DataStoreManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,8 +45,11 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
+        dataStoreManager = (activity as MainActivity).dataStoreManager
+
         initViews()
         initSwipeToRefresh()
+        observeUiPreferences()
 
         binding.fab.setOnClickListener {
             binding.recyclerView.scrollToPosition(0)
@@ -131,7 +141,6 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
                 }
         }
 
-
     }
 
 
@@ -143,7 +152,6 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
         menuInflater.inflate(R.menu.menu_main, menu)
         menuTheme = menu.findItem(R.id.action_theme)
         setUpMenuThemeIcon(viewModel.isDark)
-
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -153,18 +161,12 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
                 true
             }
             R.id.action_theme -> {
-                // Get new mode.
-                val mode =
-                    if ((resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_NO) {
-                        viewModel.isDark = true
-                        AppCompatDelegate.MODE_NIGHT_YES
-                    } else {
-                        viewModel.isDark = false
-                        AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY
+                lifecycleScope.launch {
+                    when (viewModel.isDark) {
+                        true -> dataStoreManager.setThemeMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        false -> dataStoreManager.setThemeMode(AppCompatDelegate.MODE_NIGHT_YES)
                     }
-                // Change UI Mode
-                AppCompatDelegate.setDefaultNightMode(mode)
-                setUpMenuThemeIcon(viewModel.isDark)
+                }
                 true
             }
             else -> false
@@ -172,11 +174,24 @@ class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {
     }
 
     private fun setUpMenuThemeIcon(isDark: Boolean) {
-        menuTheme.icon = if (isDark) ContextCompat.getDrawable(
+        menuTheme?.icon = if (isDark) ContextCompat.getDrawable(
             requireActivity(),
             R.drawable.ic_light_mode_24px
         ) else ContextCompat.getDrawable(requireActivity(), R.drawable.ic_dark_mode_24dp)
+    }
 
+    private fun observeUiPreferences() {
+        dataStoreManager.themeMode.asLiveData().observe(viewLifecycleOwner) { uiMode ->
+            when (uiMode) {
+                AppCompatDelegate.MODE_NIGHT_YES -> viewModel.isDark = true
+                AppCompatDelegate.MODE_NIGHT_NO -> viewModel.isDark = false
+            }
+            changeTheme(uiMode)
+        }
+    }
+
+    private fun changeTheme(mode: Int) {
+        AppCompatDelegate.setDefaultNightMode(mode)
     }
 
     override fun onDestroyView() {
