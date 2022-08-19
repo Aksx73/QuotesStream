@@ -1,11 +1,11 @@
 package com.absut.jetquotes.ui.quote
 
-import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
@@ -21,9 +21,11 @@ import com.absut.jetquotes.R
 import com.absut.jetquotes.data.preference.DataStoreManager
 import com.absut.jetquotes.databinding.FragmentQuotesBinding
 import com.absut.jetquotes.ui.MainActivity
-import com.absut.jetquotes.ui.viewmodel.QuoteViewModel
 import com.absut.jetquotes.ui.asMergedLoadStates
-import kotlinx.coroutines.flow.*
+import com.absut.jetquotes.ui.viewmodel.QuoteViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChangedBy
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 class QuoteFragment : Fragment(R.layout.fragment_quotes), MenuProvider {

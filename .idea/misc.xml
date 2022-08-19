@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Personal/Akshay/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_quote.xml" value="0.191" />
+        <entry key="..\:/Personal/Akshay/StudioProjects/Quotes-Stream/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
+        <entry key="..\:/Personal/Akshay/StudioProjects/Quotes-Stream/app/src/main/res/layout/quote_list_item.xml" value="0.23802083333333332" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_arrow_up_24dp.xml" value="0.205" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_copy_24dp.xml" value="0.205" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_favorite_24px.xml" value="0.205" />
