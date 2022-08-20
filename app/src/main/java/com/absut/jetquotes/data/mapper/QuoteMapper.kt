@@ -12,6 +12,3 @@ fun QuoteDto.toQuote(): Quote {
         length = length
     )
 }
-
-
-

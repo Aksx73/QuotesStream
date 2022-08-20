@@ -3,9 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Personal/Akshay/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_quote.xml" value="0.191" />
-        <entry key="..\:/Personal/Akshay/StudioProjects/Quotes-Stream/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
-        <entry key="..\:/Personal/Akshay/StudioProjects/Quotes-Stream/app/src/main/res/layout/quote_list_item.xml" value="0.23802083333333332" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_arrow_up_24dp.xml" value="0.205" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_copy_24dp.xml" value="0.205" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/drawable/ic_favorite_24px.xml" value="0.205" />
@@ -28,10 +25,15 @@
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/layout/quote_list_item.xml" value="0.33" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/menu/menu_main.xml" value="0.337037037037037" />
         <entry key="..\:/StudioProjects/JetQuotes/app/src/main/res/xml/file_paths.xml" value="0.36666666666666664" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.215" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable-v21/app_widget_inner_view_background.xml" value="0.215" />
         <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_dark_mode_24dp.xml" value="0.215" />
         <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_light_mode_24px.xml" value="0.215" />
         <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_lightbulb.xml" value="0.215" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/drawable/ic_quote.xml" value="0.215" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/layout/activity_main.xml" value="0.35555555555555557" />
         <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/layout/fragment_quotes.xml" value="0.35555555555555557" />
+        <entry key="..\:/StudioProjects/Quotes-Stream/app/src/main/res/layout/quote_of_day_widget.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -2,7 +2,6 @@ package com.absut.jetquotes.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -11,7 +10,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.absut.jetquotes.R
 import com.absut.jetquotes.data.preference.DataStoreManager
 import com.absut.jetquotes.databinding.ActivityMainBinding
-import com.google.android.material.appbar.MaterialToolbar
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var dataStoreManager: DataStoreManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-       // WindowCompat.setDecorFitsSystemWindows(window, false)
+        //WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)

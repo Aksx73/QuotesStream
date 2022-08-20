@@ -8,8 +8,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.absut.jetquotes.R
 import com.absut.jetquotes.databinding.FragmentFavoriteBinding
-import com.absut.jetquotes.ui.quote.QuoteAdapter
-import com.absut.jetquotes.ui.quote.QuoteFragmentDirections
 import com.absut.jetquotes.ui.viewmodel.QuoteViewModel
 
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
