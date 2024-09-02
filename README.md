@@ -1,4 +1,4 @@
-[![Surface-Pro-8-2-1.png](https://i.postimg.cc/tTWcR3B0/Surface-Pro-8-2-1.png)](https://postimg.cc/cg1hXnqT)
+[![Surface-Pro-8-2-1.png](https://github.com/Aksx73/QuotesStream/blob/master/screenshots/Surface-Pro-8-2-1.png)](https://github.com/Aksx73/QuotesStream/blob/master/screenshots/Surface-Pro-8-2-1.png?raw=true)
 
 # Quotes Stream
 Quotes application built to demonstrate Pagination using Jetpack Paging library with Remote Mediator following MVVM architecture
